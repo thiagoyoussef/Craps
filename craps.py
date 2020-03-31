@@ -8,3 +8,12 @@ def twelve(aposta,fichas,soma_dados):
         fichas+=aposta*30
     else:
         fichas=fichas-aposta
+
+
+
+
+
+
+
+
+
