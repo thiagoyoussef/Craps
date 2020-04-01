@@ -1,10 +1,20 @@
 import random 
 fichas=500
-
-soma_dados=random.randint(1,6)+random.randint(1,6)
 quer_sair = False
 estaPoint = False
 estaComeout = True
+
+#funcao pass line bet come out
+def pass_line_bet_come_out(aposta,fichas):
+    soma_dados=random.randint(1,6)+random.randint(1,6)
+    if soma_dados==7 or soma_dados==11:
+        fichas+=aposta
+        return fichas
+    elif soma_dados==2 or soma_dados==3 or soma_dados==12:
+        fichas=fichas-aposta
+        return fichas
+    elif soma_dados==4 or soma_dados==5 or soma_dados==6 or soma_dados==8 or soma_dados==9 or soma_dados==10:
+        return True
 
 #funcao anycraps
 def any_craps(aposta, soma_dados, fichas):
@@ -28,7 +38,7 @@ while quer_sair == False or fichas > 0:
         aposta_adc=input("Você deseja realizar outro tipo de aposta? (s/n) ")
         fichas-=aposta
         if aposta_adc=="s":
-            append.tipo_aposta(int(input("Qual aposta desejas fazer? (retorne com o número correspondente): \nPass Line Bet(1)\nField(2)\nAny Craps(3)\nTwelve(4)\n"))))
+            append.tipo_aposta(int(input("Qual aposta desejas fazer? (retorne com o número correspondente): \nPass Line Bet(1)\nField(2)\nAny Craps(3)\nTwelve(4)\n")))
         else:
             if tipo_aposta[0]==1 or tipo_aposta[1]==1 or tipo_aposta[2]==1 or tipo_aposta[3]==1:
                 pass_line_bet_come_out(aposta,fichas)
