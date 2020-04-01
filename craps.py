@@ -51,6 +51,7 @@ estaPoint = False
 estaComeout = True
 while quer_sair == False and fichas > 0:
     sair = input('Gostaria de sair do jogo? ')
+    
     if sair == 'sim' or sair == 'Sim':
         quer_sair = True
     else: #A partir desse else temos a fase comeout
@@ -71,20 +72,6 @@ while quer_sair == False and fichas > 0:
         if aposta[2] != 0: #se vai rodar o any craps
 
         if aposta[3] != 0: #se vai rodar o twelve
+
+        aposta.clear()
         '''
-            
-            
-            
-        """
-            if tipo_aposta[0]==1 or tipo_aposta[1]==1 or tipo_aposta[2]==1 or tipo_aposta[3]==1:
-                print(pass_line_bet_come_out(aposta,fichas))
-                if pass_line_bet_come_out==True:
-                    aposta_adc=input("Você deseja realizar outro tipo de aposta? (s/n) ")
-                    
-            elif tipo_aposta[0]==2 or tipo_aposta[1]==2 or tipo_aposta[2]==2 or tipo_aposta[3]==2:
-                field(aposta,fichas)
-            elif tipo_aposta[0]==3 or tipo_aposta[1]==3 or tipo_aposta[2]==3 or tipo_aposta[3]==3:
-                any_craps(aposta,fichas)
-            elif tipo_aposta[0]==4 or tipo_aposta[1]==4 or tipo_aposta[2]==4 or tipo_aposta[3]==4:
-                twelve(aposta,fichas)
-        """
