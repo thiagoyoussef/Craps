@@ -74,6 +74,5 @@ while quer_sair == False and fichas > 0:
 
         if aposta[3] != 0: #se vai rodar o twelve
             print(twelve(aposta[3],fichas))
-
         aposta.clear()
         
