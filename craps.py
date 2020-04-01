@@ -68,8 +68,10 @@ while quer_sair == False and fichas > 0:
         if aposta[0] != 0: #se vai rodar o pass_line_bet_come_out
             
             retorno=(pass_line_bet_come_out(aposta[0],fichas))
+            boole = retorno[0] #boolean se entrou na fase point
+            point = retorno[1] #valor da point obtido no come out
             x=0
-            while retorno==True and x==0:
+            while boole==True and x==0:
                 print('Voce esta na fase Point')
                 aposta_adc=input("Você deseja realizar outro tipo de aposta? (s/n) ")
                 if aposta_adc=="n":
@@ -86,9 +88,6 @@ while quer_sair == False and fichas > 0:
                 #    tipo_aposta = (int(input("Qual aposta desejas fazer? (retorne com o número correspondente): \nField(1)\nAny Craps(2)\nTwelve(3)\n")))
                 #    aposta[tipo_aposta] = int(input("Quantas fichas você deseja apostar? "))
                 #    fichas-=aposta[tipo_aposta]
-
-
-                
 
 
         if aposta[1] != 0: #se vai rodar o field
