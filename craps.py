@@ -24,6 +24,11 @@ while quer_sair == False or fichas != 0:
         print('Voce esta na fase Come out')
         tipo_aposta = int(input("Qual aposta desejas fazer? (retorne com o número correspondente): \nPass Line Bet(1)\nField(2)\nAny Craps(3)\nTwelve(4)\n"))
         aposta = int(input("Quantas fichas você deseja apostar? "))
+        if tipo_aposta == 1:
+
+        
+
+
         if soma_dados==7 or soma_dados==11:
             fichas+=aposta
         elif soma_dados==2 or soma_dados==3 or soma_dados==12:
