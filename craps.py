@@ -56,14 +56,26 @@ while quer_sair == False and fichas > 0:
     else: #A partir desse else temos a fase comeout
         print('Voce esta na fase Come out')
         print(fichas)
-        tipo_aposta=[]
-        tipo_aposta.append(int(input("Qual aposta desejas fazer? (retorne com o número correspondente): \nPass Line Bet(1)\nField(2)\nAny Craps(3)\nTwelve(4)\n")))
-        aposta = int(input("Quantas fichas você deseja apostar? "))
-        aposta_adc=input("Você deseja realizar outro tipo de aposta? (s/n) ")
-        fichas-=aposta
-        if aposta_adc=="s":
-            tipo_aposta.append(int(input("Qual aposta desejas fazer? (retorne com o número correspondente): \nPass Line Bet(1)\nField(2)\nAny Craps(3)\nTwelve(4)\n")))
-        else:
+        aposta = [0]*4
+        aposta_adc = 's'
+        while aposta_adc=="s":
+            tipo_aposta = (int(input("Qual aposta desejas fazer? (retorne com o número correspondente): \nPass Line Bet(0)\nField(1)\nAny Craps(2)\nTwelve(3)\n")))
+            aposta[tipo_aposta] = int(input("Quantas fichas você deseja apostar? "))
+            fichas-=aposta[tipo_aposta]
+            aposta_adc=input("Você deseja realizar outro tipo de aposta? (s/n) ")
+        if aposta[0] != 0: #se vai rodar o pass_line_bet_come_out
+            print(pass_line_bet_come_out(aposta[0],fichas))
+        '''
+        if aposta[1] != 0: #se vai rodar o field
+
+        if aposta[2] != 0: #se vai rodar o any craps
+
+        if aposta[3] != 0: #se vai rodar o twelve
+        '''
+            
+            
+            
+        """
             if tipo_aposta[0]==1 or tipo_aposta[1]==1 or tipo_aposta[2]==1 or tipo_aposta[3]==1:
                 print(pass_line_bet_come_out(aposta,fichas))
                 if pass_line_bet_come_out==True:
@@ -75,3 +87,4 @@ while quer_sair == False and fichas > 0:
                 any_craps(aposta,fichas)
             elif tipo_aposta[0]==4 or tipo_aposta[1]==4 or tipo_aposta[2]==4 or tipo_aposta[3]==4:
                 twelve(aposta,fichas)
+        """
