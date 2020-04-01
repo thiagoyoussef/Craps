@@ -2,6 +2,7 @@
 #funcao pass line bet come out
 def pass_line_bet_come_out(aposta,fichas):
     soma_dados=random.randint(1,6)+random.randint(1,6)
+    point=soma_dados
     if soma_dados==7 or soma_dados==11:
         fichas+=aposta*2
         return fichas
@@ -9,7 +10,7 @@ def pass_line_bet_come_out(aposta,fichas):
         fichas=fichas
         return fichas
     elif soma_dados==4 or soma_dados==5 or soma_dados==6 or soma_dados==8 or soma_dados==9 or soma_dados==10:
-        return True
+        return bool(True),int(point)
 
 #funcao pass line bet point
 
@@ -65,7 +66,30 @@ while quer_sair == False and fichas > 0:
             fichas-=aposta[tipo_aposta]
             aposta_adc=input("Você deseja realizar outro tipo de aposta? (s/n) ")
         if aposta[0] != 0: #se vai rodar o pass_line_bet_come_out
-            print(pass_line_bet_come_out(aposta[0],fichas))
+            
+            retorno=(pass_line_bet_come_out(aposta[0],fichas))
+            x=0
+            while retorno==True and x==0:
+                print('Voce esta na fase Point')
+                aposta_adc=input("Você deseja realizar outro tipo de aposta? (s/n) ")
+                if aposta_adc=="n":
+                    soma_dados=random.randint(1,6)+random.randint(1,6)
+                    if point==soma_dados:
+                        fichas+=aposta*2
+                        x=1
+                    elif soma_dados==7:
+                        fichas=fichas
+                        x=1
+                    else:
+                        x=0
+                #else:
+                #    tipo_aposta = (int(input("Qual aposta desejas fazer? (retorne com o número correspondente): \nField(1)\nAny Craps(2)\nTwelve(3)\n")))
+                #    aposta[tipo_aposta] = int(input("Quantas fichas você deseja apostar? "))
+                #    fichas-=aposta[tipo_aposta]
+
+
+                
+
 
         if aposta[1] != 0: #se vai rodar o field
             print(field(aposta[1],fichas))
