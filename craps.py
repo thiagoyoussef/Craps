@@ -50,7 +50,8 @@ quer_sair = False
 estaPoint = False
 estaComeout = True
 while quer_sair == False and fichas > 0:
-    sair = input('Gostaria de sair do jogo? ') #a cada inicio de rodada pergunta-se ao jogado se ele gostaria de sair
+    sair = input('Gostaria de sair do jogo? ')
+    
     if sair == 'sim' or sair == 'Sim':
         quer_sair = True
     else: #A partir desse else temos a fase comeout
@@ -58,19 +59,21 @@ while quer_sair == False and fichas > 0:
         print(fichas)
         aposta = [0]*4
         aposta_adc = 's'
-        while aposta_adc=="s": #oportunidade do jogar de realizar suas apostas
+        while aposta_adc=="s":
             tipo_aposta = (int(input("Qual aposta desejas fazer? (retorne com o número correspondente): \nPass Line Bet(0)\nField(1)\nAny Craps(2)\nTwelve(3)\n")))
             aposta[tipo_aposta] = int(input("Quantas fichas você deseja apostar? "))
             fichas-=aposta[tipo_aposta]
             aposta_adc=input("Você deseja realizar outro tipo de aposta? (s/n) ")
         if aposta[0] != 0: #se vai rodar o pass_line_bet_come_out
             print(pass_line_bet_come_out(aposta[0],fichas))
-        '''
-        if aposta[1] != 0: #se vai rodar o field
 
+        if aposta[1] != 0: #se vai rodar o field
+            print(field(aposta[1],fichas))
         if aposta[2] != 0: #se vai rodar o any craps
+            print(any_craps(aposta[2],fichas))
 
         if aposta[3] != 0: #se vai rodar o twelve
+            print(twelve(aposta[3],fichas))
 
         aposta.clear()
-        '''
+        
