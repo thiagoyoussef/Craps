@@ -84,7 +84,7 @@ while quer_sair == False and fichas > 0:
                 if aposta_adc=="n":
                     soma_dados=random.randint(1,6)+random.randint(1,6)
                     if point==soma_dados:
-                        fichas+=aposta*2
+                        fichas+=aposta[0]*2
                         x=1
                     elif soma_dados==7:
                         fichas=fichas
@@ -92,6 +92,9 @@ while quer_sair == False and fichas > 0:
                     else:
                         x=0
                 else:
+                    aposta[1]=0
+                    aposta[2]=0
+                    aposta[3]=0
                     tipo_aposta = (int(input("Qual aposta desejas fazer? (retorne com o número correspondente): \nField(1)\nAny Craps(2)\nTwelve(3)\n")))
                     aposta[tipo_aposta] = int(input("Quantas fichas você deseja apostar? "))
                     fichas-=aposta[tipo_aposta]
@@ -101,4 +104,4 @@ while quer_sair == False and fichas > 0:
                             print(any_craps(aposta[2],fichas))
                     if aposta[3] != 0: #se vai rodar o twelve
                             print(twelve(aposta[3],fichas))
-                    if aposta[0] != 0: #se vai rodar o pass_line_bet_come_out
+    aposta.clear()
