@@ -4,6 +4,15 @@ tipo_aposta = int(input("Você irá fazer uma aposta(retorne com o número corre
 aposta = int(input("Quantas fichas você deseja apostar? "))
 soma_dados=random.randint(1,6)+random.randint(1,6)
 quer_sair = False
+estaPoint = False
+estaComeout = True
+print('Voce esta na fase Come out')
+
+
+
+
+
+
 while quer_sair == False or fichas != 0:
     sair = input('Gostaria de sair do jogo? ')
     if sair == 'sim' or sair == 'Sim':
