@@ -3,10 +3,10 @@
 def pass_line_bet_come_out(aposta,fichas):
     soma_dados=random.randint(1,6)+random.randint(1,6)
     if soma_dados==7 or soma_dados==11:
-        fichas+=aposta
+        fichas+=aposta*2
         return fichas
     elif soma_dados==2 or soma_dados==3 or soma_dados==12:
-        fichas=fichas-aposta
+        fichas=fichas
         return fichas
     elif soma_dados==4 or soma_dados==5 or soma_dados==6 or soma_dados==8 or soma_dados==9 or soma_dados==10:
         return True
@@ -17,31 +17,31 @@ def pass_line_bet_come_out(aposta,fichas):
 def any_craps(aposta,fichas):
     soma_dados=random.randint(1,6)+random.randint(1,6)
     if soma_dados == 2 or soma_dados == 3 or soma_dados == 12:
-        fichas += (7*aposta)
+        fichas += (7*aposta)+aposta
     else:
-        fichas -= aposta
+        fichas=fichas
     return fichas
 
 #função field
 def field(aposta,fichas):
     soma_dados=random.randint(1,6)+random.randint(1,6)
     if soma_dados==5 or soma_dados==6 or soma_dados==7 or soma_dados==8:
-        fichas=fichas-aposta
+        fichas=fichas
     elif soma_dados==3 or soma_dados==4 or soma_dados==9 or soma_dados==10 or soma_dados==11:
-        fichas+=aposta
-    elif soma_dados==2:
         fichas+=aposta*2
+    elif soma_dados==2:
+        fichas+=aposta*2+aposta
     elif soma_dados==12:
-        fichas+=aposta*3
+        fichas+=aposta*3+aposta
     return fichas
 
 #função twelve
 def twelve(aposta,fichas):
     soma_dados=random.randint(1,6)+random.randint(1,6)
     if soma_dados==12:
-        fichas+=aposta*30
+        fichas+=aposta*30+aposta
     else:
-        fichas=fichas-aposta
+        fichas=fichas
     return fichas
 
 import random 
@@ -68,7 +68,7 @@ while quer_sair == False and fichas > 0:
                 print(pass_line_bet_come_out(aposta,fichas))
                 if pass_line_bet_come_out==True:
                     aposta_adc=input("Você deseja realizar outro tipo de aposta? (s/n) ")
-                    pass_line_bet_point(aposta,ficha)
+                    
             elif tipo_aposta[0]==2 or tipo_aposta[1]==2 or tipo_aposta[2]==2 or tipo_aposta[3]==2:
                 field(aposta,fichas)
             elif tipo_aposta[0]==3 or tipo_aposta[1]==3 or tipo_aposta[2]==3 or tipo_aposta[3]==3:
