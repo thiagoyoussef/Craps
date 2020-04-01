@@ -65,6 +65,13 @@ while quer_sair == False and fichas > 0:
             aposta[tipo_aposta] = int(input("Quantas fichas você deseja apostar? "))
             fichas-=aposta[tipo_aposta]
             aposta_adc=input("Você deseja realizar outro tipo de aposta? (s/n) ")
+        if aposta[1] != 0: #se vai rodar o field
+            print(field(aposta[1],fichas))
+        if aposta[2] != 0: #se vai rodar o any craps
+            print(any_craps(aposta[2],fichas))
+
+        if aposta[3] != 0: #se vai rodar o twelve
+            print(twelve(aposta[3],fichas))
         if aposta[0] != 0: #se vai rodar o pass_line_bet_come_out
             
             retorno=(pass_line_bet_come_out(aposta[0],fichas))
@@ -84,18 +91,14 @@ while quer_sair == False and fichas > 0:
                         x=1
                     else:
                         x=0
-                #else:
-                #    tipo_aposta = (int(input("Qual aposta desejas fazer? (retorne com o número correspondente): \nField(1)\nAny Craps(2)\nTwelve(3)\n")))
-                #    aposta[tipo_aposta] = int(input("Quantas fichas você deseja apostar? "))
-                #    fichas-=aposta[tipo_aposta]
-
-
-        if aposta[1] != 0: #se vai rodar o field
-            print(field(aposta[1],fichas))
-        if aposta[2] != 0: #se vai rodar o any craps
-            print(any_craps(aposta[2],fichas))
-
-        if aposta[3] != 0: #se vai rodar o twelve
-            print(twelve(aposta[3],fichas))
-        aposta.clear()
-        
+                else:
+                    tipo_aposta = (int(input("Qual aposta desejas fazer? (retorne com o número correspondente): \nField(1)\nAny Craps(2)\nTwelve(3)\n")))
+                    aposta[tipo_aposta] = int(input("Quantas fichas você deseja apostar? "))
+                    fichas-=aposta[tipo_aposta]
+                    if aposta[1] != 0: #se vai rodar o field   
+                            print(field(aposta[1],fichas))
+                    if aposta[2] != 0: #se vai rodar o any craps
+                            print(any_craps(aposta[2],fichas))
+                    if aposta[3] != 0: #se vai rodar o twelve
+                            print(twelve(aposta[3],fichas))
+                    if aposta[0] != 0: #se vai rodar o pass_line_bet_come_out
