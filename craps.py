@@ -56,11 +56,11 @@ estaComeout = True
 aposta=[]
 boole = False
 #Início do jogo
+print('Bem-vindo ao Craps!')
 while quer_sair == False and fichas > 0:
     print('Você tem {} fichas' .format(fichas))
-    sair = input('Gostaria de sair do jogo? ')
-    
-    if sair == 'sim' or sair == 'Sim' or sair =='s':
+    sair = input('Gostaria de sair do jogo? (s/n) ')
+    if sair =='s':
         quer_sair = True
         break
     print('Voce esta na fase Come out')
@@ -68,7 +68,7 @@ while quer_sair == False and fichas > 0:
     aposta = [0]*4
     aposta_adc = 's'
     while aposta_adc=="s":
-        tipo_aposta = (int(input("Qual aposta desejas fazer? (retorne com o número correspondente): \nPass Line Bet(0)\nField(1)\nAny Craps(2)\nTwelve(3)\n")))
+        tipo_aposta = (int(input("Qual aposta desejas fazer? (digite o número correspondente): \nPass Line Bet(0)\nField(1)\nAny Craps(2)\nTwelve(3)\n")))
         aposta[tipo_aposta] = int(input("Quantas fichas você deseja apostar? "))
         if sum(aposta) > fichas: #valida apostas
             print('Você apostou mais fichas do que possui! \nRealize todas as apostas novamente:')
@@ -83,18 +83,20 @@ while quer_sair == False and fichas > 0:
     fichas-=aposta[2]
     fichas-=aposta[3]
     if aposta[1] != 0: #se vai rodar o field
-        print("Na aposta Field você terminou com {} fichas".format(field(aposta[1],fichas)))
+        fichas = field(aposta[1],fichas)
+        print("Na aposta Field você terminou com {} fichas".format(fichas))
     if aposta[2] != 0: #se vai rodar o any craps
-        print("Na aposta Any Craps você terminou com {} fichas".format(any_craps(aposta[2],fichas)))
+        fichas = field(aposta[2],fichas)
+        print("Na aposta Any Craps você terminou com {} fichas".format(fichas))
     if aposta[3] != 0: #se vai rodar o twelve
-        print("Na aposta Twelve você terminou com {} fichas".format(twelve(aposta[3],fichas)))
+        fichas = field(aposta[3],fichas)
+        print("Na aposta Twelve você terminou com {} fichas".format(fichas))
     if fichas <= 0:
         quer_sair = True
         break
     if aposta[0] != 0: #se vai rodar o pass_line_bet_come_out
         boole = False
         retorno=(pass_line_bet_come_out(aposta[0],fichas))
-        print(retorno)
         boole = retorno[0] #boolean se entrou na fase point
         fichas = retorno[1] #fichas que sairam da funcao
         point = retorno[2] #valor da point obtido no come out
@@ -106,16 +108,16 @@ while quer_sair == False and fichas > 0:
             if point==soma_dados:
                 fichas+=aposta[0]*2
                 x=1
-                print("Você ganhou o Point e saiu com {} fichas!".format(fichas))
+                print("Os dados foram jogados automaticamente e você ganhou o Point e saiu com {} fichas!".format(fichas))
                 continue
             elif soma_dados==7:
                 fichas=fichas
                 x=1
-                print("Você perdeu o Point e saiu com {} fichas!".format(fichas))
+                print("Os dados foram jogados automaticamente e você perdeu o Point e saiu com {} fichas!".format(fichas))
                 continue
             else:
                 x=0
-                print("Os dados foram jogados e o resultado foi diferente do point e 7!")
+                print("Os dados foram jogados automaticamente e o resultado foi diferente de {} e 7!".format(point))
             
             aposta[1]=0 #limpando apostas feitas anteriormente
             aposta[2]=0
@@ -123,25 +125,27 @@ while quer_sair == False and fichas > 0:
             print('Você tem {} fichas' .format(fichas))
             aposta_adc=input("Você deseja realizar outro tipo de aposta antes de jogar os dados novamente? (s/n) ")
             while aposta_adc=="s":
-                tipo_aposta = (int(input("Qual aposta desejas fazer? (retorne com o número correspondente): \nField(1)\nAny Craps(2)\nTwelve(3)\n")))
+                tipo_aposta = (int(input("Qual aposta desejas fazer? (digite o número correspondente): \nField(1)\nAny Craps(2)\nTwelve(3)\n")))
                 aposta[tipo_aposta] = int(input("Quantas fichas você deseja apostar? "))
-                if sum(aposta) > fichas: #valida apostas
+                if (aposta[1] + aposta[2] + aposta[3]) > fichas: #valida apostas
                     print('Você apostou mais fichas do que possui! \nRealize todas as apostas novamente:')
-                    aposta[0] = 0
                     aposta[1] = 0
                     aposta[2] = 0
                     aposta[3] = 0
                     continue
                 aposta_adc=input("Você deseja realizar outro tipo de aposta? (s/n) ")
-            fichas-=aposta[1] #após a soma das apostas serem validadas, o valor de cada aposta é subtraído das ficas
+            fichas-=aposta[1] #após a soma das apostas serem validadas, o valor de cada aposta é subtraído das fichas
             fichas-=aposta[2]
             fichas-=aposta[3]
             if aposta[1] != 0: #se vai rodar o field
-                print("Na aposta Field você terminou com {} fichas".format(field(aposta[1],fichas)))
+                fichas = field(aposta[1],fichas)
+                print("Na aposta Field você terminou com {} fichas".format(fichas))
             if aposta[2] != 0: #se vai rodar o any craps
-                print("Na aposta Any Craps você terminou com {} fichas".format(any_craps(aposta[2],fichas)))
+                fichas = any_craps(aposta[2],fichas)
+                print("Na aposta Any Craps você terminou com {} fichas".format(fichas))
             if aposta[3] != 0: #se vai rodar o twelve
-                print("Na aposta Twelve você terminou com {} fichas".format(twelve(aposta[3],fichas)))
+                fichas = twelve(aposta[3],fichas)
+                print("Na aposta Twelve você terminou com {} fichas".format(fichas))
             if fichas <= 0: #checar se ainda tem fichas dentro do while do point
                 quer_sair = True
                 break
