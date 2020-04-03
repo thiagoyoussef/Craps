@@ -71,7 +71,7 @@ while quer_sair == False and fichas > 0:
         tipo_aposta = (int(input("Qual aposta desejas fazer? (digite o número correspondente): \nPass Line Bet(0)\nField(1)\nAny Craps(2)\nTwelve(3)\n")))
         aposta[tipo_aposta] = int(input("Quantas fichas você deseja apostar? "))
         if sum(aposta) > fichas: #valida apostas
-            print('Você apostou mais fichas do que possui! \nRealize todas as apostas novamente:')
+            print('Você apostou mais fichas do que possui! Você tem {} fichas\nRealize todas as apostas novamente:'.format(fichas))
             aposta[0] = 0
             aposta[1] = 0
             aposta[2] = 0
@@ -86,10 +86,10 @@ while quer_sair == False and fichas > 0:
         fichas = field(aposta[1],fichas)
         print("Na aposta Field você terminou com {} fichas".format(fichas))
     if aposta[2] != 0: #se vai rodar o any craps
-        fichas = field(aposta[2],fichas)
+        fichas = any_craps(aposta[2],fichas)
         print("Na aposta Any Craps você terminou com {} fichas".format(fichas))
     if aposta[3] != 0: #se vai rodar o twelve
-        fichas = field(aposta[3],fichas)
+        fichas = twelve(aposta[3],fichas)
         print("Na aposta Twelve você terminou com {} fichas".format(fichas))
     if fichas <= 0:
         quer_sair = True
