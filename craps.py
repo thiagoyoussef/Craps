@@ -128,7 +128,7 @@ while quer_sair == False and fichas > 0:
                 tipo_aposta = (int(input("Qual aposta desejas fazer? (digite o número correspondente): \nField(1)\nAny Craps(2)\nTwelve(3)\n")))
                 aposta[tipo_aposta] = int(input("Quantas fichas você deseja apostar? "))
                 if (aposta[1] + aposta[2] + aposta[3]) > fichas: #valida apostas
-                    print('Você apostou mais fichas do que possui! \nRealize todas as apostas novamente:')
+                    print('Você apostou mais fichas do que possui! Você tem {} fichas\nRealize todas as apostas novamente:'.format(fichas))
                     aposta[1] = 0
                     aposta[2] = 0
                     aposta[3] = 0
