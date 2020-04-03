@@ -12,7 +12,6 @@ def pass_line_bet_come_out(aposta,fichas):
     elif soma_dados==4 or soma_dados==5 or soma_dados==6 or soma_dados==8 or soma_dados==9 or soma_dados==10:
         return bool(True),int(point)
 
-#funcao pass line bet point
 
 #funcao anycraps
 def any_craps(aposta,fichas):
@@ -50,10 +49,11 @@ fichas=500
 quer_sair = False
 estaPoint = False
 estaComeout = True
+aposta=[]
 while quer_sair == False and fichas > 0:
     sair = input('Gostaria de sair do jogo? ')
     
-    if sair == 'sim' or sair == 'Sim':
+    if sair == 'sim' or sair == 'Sim' or sair =='s':
         quer_sair = True
     else: #A partir desse else temos a fase comeout
         print('Voce esta na fase Come out')
@@ -80,6 +80,7 @@ while quer_sair == False and fichas > 0:
             x=0
             while boole==True and x==0:
                 print('Voce esta na fase Point')
+                print("O valor do Point é {0}".format(point))
                 aposta_adc=input("Você deseja realizar outro tipo de aposta? (s/n) ")
                 if aposta_adc=="n":
                     soma_dados=random.randint(1,6)+random.randint(1,6)
